@@ -3,8 +3,8 @@ function [ConValue,ConVar,CI95,CI99]=ConMC(N,m,int_S1,int_S2,K,T,t,sigma1,sigma2
 tau=T-t;
 ConGBm=zeros(N,4);
 %% Loading Trained Networks %%
-pathGamma11 = 'C:\Users\Jkzhang\Desktop\MsC\Gamma11_Net.h5';
-pathGamma12 = 'C:\Users\Jkzhang\Desktop\MsC\Gamma12_Net.h5';
+pathGamma11 = '\Gamma11_Net.h5';
+pathGamma12 = '\Gamma12_Net.h5';
 GammaNet11 = importKerasNetwork(pathGamma11);
 GammaNet12 = importKerasNetwork(pathGamma12);
 %% Discretization %%
@@ -54,12 +54,12 @@ tic
     ConInd = ConPayout > 0;
     ConV = ConPayout .* ConInd;
     ConMu = 1/N * sum(ConV);
-    
+
     Var=1/N*sum((V-Mu).^2);
     ConVar=1/N*sum((ConV-ConMu).^2);
     Cov=1/N*sum((V-Mu).*(ConV-ConMu));
     c=-Cov/ConVar;
-    
+
     ConValue=exp(-r*T)/N*sum(V+c*ConV)-c*tmean;
 toc
 %% Variance %%

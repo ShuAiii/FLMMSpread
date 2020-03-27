@@ -3,8 +3,8 @@ function [value,Var,CI95,CI99]=MC(N,m,int_S1,int_S2,K,T,t,sigma1,sigma2,rho,r)
 tau=T-t;
 GBm=zeros(N,2);
 %% Loading Trained Networks %%
-pathGamma11 = 'C:\Users\Jkzhang\Desktop\MsC\Gamma11_Net.h5';
-pathGamma12 = 'C:\Users\Jkzhang\Desktop\MsC\Gamma12_Net.h5';
+pathGamma11 = '\Gamma11_Net.h5';
+pathGamma12 = '\Gamma12_Net.h5';
 GammaNet11 = importKerasNetwork(pathGamma11);
 GammaNet12 = importKerasNetwork(pathGamma12);
 %% Discretization %%
